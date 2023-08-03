@@ -85,7 +85,10 @@
         "restorePreviousStates": {
             "is2": false,
             "squadsAndFavs": false
-        }
+        },
+        "secretary": "char_249_mlyss",
+        "secretarySkinId": "char_249_mlyss#2",
+        "background": "bg_rhodes_night"
     },
     "charConfig": {
         "favorPoint": 25570,

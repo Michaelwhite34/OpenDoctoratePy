@@ -516,6 +516,14 @@ def accountSyncData():
             player_data["user"]["troop"]["chars"][index]["starMark"] = saved_character["starMark"]
             player_data["user"]["troop"]["chars"][index]["voiceLan"] = saved_character["voiceLan"]
 
+    secretary = config["userConfig"]["secretary"]
+    secretarySkinId = config["userConfig"]["secretarySkinId"]
+    background = config["userConfig"]["background"]
+
+    player_data["user"]["status"]["secretary"] = secretary
+    player_data["user"]["status"]["secretarySkinId"] = secretarySkinId
+    player_data["user"]["background"]["selected"] = background
+
     write_json(player_data, USER_JSON_PATH)
     
     return player_data
