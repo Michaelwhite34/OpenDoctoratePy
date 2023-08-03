@@ -4,6 +4,7 @@ from utils import read_json
 CONFIG_PATH = "config/config.json"
 MAILLIST_PATH = "config/mails.json"
 RLV2_CONFIG_PATH = "config/rlv2Config.json"
+SQUADS_PATH = "config/squads.json"
 SYNC_DATA_TEMPLATE_PATH = "syncData.json"
 
 # User Data

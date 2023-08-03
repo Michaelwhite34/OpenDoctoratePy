@@ -9,7 +9,7 @@ from flask import request
 from constants import USER_JSON_PATH, CONFIG_PATH, BATTLE_REPLAY_JSON_PATH, \
                     SKIN_TABLE_URL, CHARACTER_TABLE_URL, EQUIP_TABLE_URL, STORY_TABLE_URL, STAGE_TABLE_URL, \
                     SYNC_DATA_TEMPLATE_PATH, BATTLEEQUIP_TABLE_URL, DM_TABLE_URL, RETRO_TABLE_URL, \
-                    HANDBOOK_INFO_TABLE_URL, MAILLIST_PATH, CHARM_TABLE_URL, ACTIVITY_TABLE_URL
+                    HANDBOOK_INFO_TABLE_URL, MAILLIST_PATH, CHARM_TABLE_URL, ACTIVITY_TABLE_URL, SQUADS_PATH
 from utils import read_json, write_json
 from core.function.update import updateData
 import uuid
@@ -480,6 +480,27 @@ def accountSyncData():
     if replay_data["currentCharConfig"] in list(replay_data["saved"].keys()):
         for replay in replay_data["saved"][replay_data["currentCharConfig"]]:
             player_data["user"]["dungeon"]["stages"][replay]["hasBattleReplay"] = 1
+
+    squads_data = read_json(SQUADS_PATH)
+    charId2instId = {}
+    for character_index, character in player_data["user"]["troop"]["chars"].items():
+        charId2instId[character["charId"]] = character["instId"]
+    for i in squads_data:
+        j = 0
+        for slot in squads_data[i]["slots"]:
+            if j == 12:
+                break
+            charId = slot["charId"]
+            del slot["charId"]
+            instId = 1
+            if charId in charId2instId:
+                instId = charId2instId[charId]
+            slot["charInstId"] = instId
+            j += 1
+        for k in range(j, 12):
+            squads_data[i]["slots"].append(None)
+
+    player_data["user"]["troop"]["squads"] = squads_data
 
     # Copy over from previous launch if data exists
     if "user" in list(saved_data.keys()) and config["userConfig"]["restorePreviousStates"]["squadsAndFavs"]:
