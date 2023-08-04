@@ -176,9 +176,9 @@
                 "currentEquip": "uniequip_002_cgbird"
             },
             {
-                "charId": "char_358_lisa",
+                "charId": "char_1012_skadi2",
                 "skillIndex": 2,
-                "currentEquip": "uniequip_002_lisa"
+                "currentEquip": null
             },
             {
                 "charId": "char_1028_texas2",
@@ -242,9 +242,9 @@
                 "currentEquip": "uniequip_002_cgbird"
             },
             {
-                "charId": "char_358_lisa",
+                "charId": "char_1012_skadi2",
                 "skillIndex": 2,
-                "currentEquip": "uniequip_002_lisa"
+                "currentEquip": null
             },
             {
                 "charId": "char_1028_texas2",
